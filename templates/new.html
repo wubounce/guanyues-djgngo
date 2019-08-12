@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load static %}
+<title>{% block title %}无心磨床送料机、无心磨床自动送料机-冠粤自动化设备{% endblock %}</title>
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/new.css' %}">
+{% endblock %}
+
+{% block content %}
+   <div class="main">
+        <div class="breadcrumb">
+            <span>您所在的位置:&nbsp;</span>
+            <ul  class="crumbs">
+                <li><a href="/">首页</a>></li>
+                <li>新闻中心</li>
+            </ul>
+        </div>
+    <div class="news_wrap">
+        <div class="page-title">
+            <div class="title"><span class="zh">公司资讯</span></div>
+        </div>
+        <ul class="articles">
+            {% for new in news_list.object_list %}
+                <li class="item">
+                    <a href="{% url 'new:new_detail' new.id %}">
+                        <p class="title">{{ new.title }}</p>
+                        <span class="date">{{ new.add_time }}</span>
+                        <p class="intro">{{ new.desc }}</p>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+        <ul class="pager">
+            {% if news_list.has_previous %}
+                <li class="prev"><a href="?{{ news_list.previous_page_number.querystring }}">上一页</a></li>
+            {% endif %}
+            {% for page in news_list.pages %}
+                {% if page %}
+                    {% ifequal page news_list.number %}
+                        <li class="is_active"><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                    {% else %}
+                        <li><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                    {% endifequal %}
+                {% else %}
+                    <li class="none"><a href="">...</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if news_list.has_next %}
+                <li class="next"><a href="?{{ news_list.next_page_number.querystring }}">下一页</a></li>
+            {% endif %}
+        </ul>
+    </div>
+   </div>
+{% endblock %}

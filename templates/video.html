@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load static %}
+<title>{% block title %}无心磨床送料机、无心磨床自动送料机-冠粤自动化设备{% endblock %}</title>
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/video.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="main">
+         <div class="breadcrumb">
+        <span>您所在的位置:&nbsp;</span>
+            <ul  class="crumbs">
+                <li><a href="/">首页</a>></li>
+                <li>视频中心</li>
+            </ul>
+        </div>
+        <div class="video_list">
+            <div class="videos_title">
+                <div class="video-nav-row clearfix">
+                    <span class="hd l">分类：</span>
+                    <div class="bd">
+                        <ul>
+                             <li class="video-nav-item {% if ctname == '' %}on{% endif %}">
+                                <a href="{% url 'video:video_list' %}?ct=&ctname=">全部</a>
+                            </li>
+                            {% for ser in all_series %}
+                                 <li class="video-nav-item {% if ser.name == ctname %}on{% endif %}">
+                                    <a href="{% url 'video:video_list' %}?ct={{ ser.id }}&ctname={{ ser.name }}">{{ ser.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="videos">
+                {% for video in videos.object_list %}
+                    <li class="item">
+                        <a class="picture" href="#" target="_blank">
+                            <video width="320" height="240" controls>
+                              <source src="{{ MEDIA_URL }}{{ video.video }}" type="video/mp4">
+                                您的浏览器不支持Video标签。
+                            </video>
+                        </a>
+                        <p class="video_name">{{ video.name }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+            <ul class="pager">
+                {% if videos.has_previous %}
+                    <li class="prev"><a href="?{{ videos.previous_page_number.querystring }}">上一页</a></li>
+                {% endif %}
+                {% for page in videos.pages %}
+                    {% if page %}
+                        {% ifequal page videos.number %}
+                            <li class="is_active"><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                        {% else %}
+                            <li><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                        {% endifequal %}
+                    {% else %}
+                        <li class="none"><a href="">...</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if videos.has_next %}
+                    <li class="next"><a href="?{{ videos.next_page_number.querystring }}">下一页</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+    </div>
+{% endblock %}

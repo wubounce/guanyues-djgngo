@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load static %}
+<title>{% block title %}无心磨床送料机、无心磨床自动送料机-冠粤自动化设备{% endblock %}</title>
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/product.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="main">
+         <div class="breadcrumb">
+            <span>您所在的位置:&nbsp;</span>
+            <ul  class="crumbs">
+                <li><a href="/">首页</a>></li>
+                <li>产品中心</li>
+            </ul>
+        </div>
+        <section class="produce_wrap">
+            <div class="submenu">
+                <div class="produce_head">
+                    <img src="/static/imgs/product.jpg">
+                </div>
+                 <ul class="sub_list">
+                    {% for series in all_series %}
+                     <li class="{% if series.id|stringformat:"i" == seriers_id %}active{% endif %}"><a href="{% url "product:list" series.id %}">{{ series.name }}</a></li>
+                    {% endfor %}
+                </ul>
+                <div class="service-hottel">
+                    <div class="service-con">
+                        <h4>7*24小时在线服务热线</h4>
+                        <h5><span>183</span><span>1101</span><span>7120</span></h5>
+                        <h6><span>一键咨询产品定制</span></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="produce_list">
+                <ul>
+                     {% for product in products.object_list %}
+                        <li class="item">
+                            <a class="picture" href="{% url 'product:product_detail' %}?product={{ product.id }}&series={{ seriers_id }}">
+                                <img src="{{ MEDIA_URL }}{{ product.image }}">
+                            </a>
+                            <div class="caption">
+                                <p  class="db"><strong class="db">{{ product.name }}</strong></p>
+                                <a href="{% url 'product:product_detail' %}?product={{ product.id }}&series={{ seriers_id }}" class="btn btn-huang" role="button">查看详情</a>
+                            </div>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </section>
+        <ul class="pager">
+            {% if products.has_previous %}
+                <li class="prev"><a href="?{{ products.previous_page_number.querystring }}">上一页</a></li>
+            {% endif %}
+            {% for page in products.pages %}
+                {% if page %}
+                    {% ifequal page products.number %}
+                        <li class="is_active"><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                    {% else %}
+                        <li><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                    {% endifequal %}
+                {% else %}
+                    <li class="none"><a href="">...</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if products.has_next %}
+                <li class="next"><a href="?{{ products.next_page_number.querystring }}">下一页</a></li>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}

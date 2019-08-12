@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load static %}
+<title>{% block title %}无心磨床送料机、无心磨床自动送料机-冠粤自动化设备{% endblock %}</title>
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/new.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="main">
+        <div class="breadcrumb">
+            <span>您所在的位置:&nbsp;</span>
+            <ul  class="crumbs">
+                <li><a href="/">首页</a>></li>
+                <li>新闻中心</li>
+            </ul>
+        </div>
+    <div class="deatil_wrap">
+        <div class="article">
+            <h1 class="title">{{ news.title }}</h1>
+            <span class="date">{{ news.add_time }}</span>
+            <div class="descript">
+                {% autoescape off %}
+                {{ news.detail }}
+                {% endautoescape %}
+
+            </div>
+
+        </div>
+    </div>
+   </div>
+{% endblock %}
+

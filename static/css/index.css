@@ -1,0 +1,33 @@
+.company_intr {
+    width: 1200px;
+    overflow: hidden;
+    margin: 400px auto 0;
+}
+.company_intr .intro{
+    float: left;
+    width: 800px;
+    padding:20px 20px 20px 0;
+}
+.video {
+    float: left;
+    width:360px;
+    height: 300px;
+    padding-top:20px;
+}
+.video video {
+    padding-top: 15px;
+}
+.company_pic {
+    padding-top:15px;
+    font-size: 14px;
+}
+.company_pic img {
+     line-height:20px;
+     float: left;
+     margin-right: 15px;
+}
+.produce_wrap {
+    width: 1200px;
+    overflow: hidden;
+    margin: 30px auto 40px;
+}

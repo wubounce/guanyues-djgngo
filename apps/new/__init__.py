@@ -1,0 +1,1 @@
+default_app_config = 'new.apps.NewConfig' #设置app显示的名字

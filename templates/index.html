@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load static %}
+<title>{% block title %}无心磨床送料机、无心磨床自动送料机-冠粤自动化设备{% endblock %}</title>
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+    <article>
+        <section class="company_intr">
+            <div class="intro">
+                <h2>公司简介</h2>
+                <p>Company Simple Introduction</p>
+		 <div class="company_pic"><img src="http://www.cx519.com/images/index_24.gif" alt="东莞市冠粤自动化科技有限公司厂房正大门" width="200" height="140">东莞市冠粤自动化科技有限公司成员2000年聚集东莞，经过17年精心炼造。公司成立于2017年初，是一家集制造业，车削、外圆研磨、滚牙、滚花、冲压、测量、校验等棒材系列设备，标准、非标自动化设备研发制造为一体的综合企业，具备有专业设计制造销售团队。
+ 		<p>主要生产包括<strong><a href="http://guanyues.com/">磨床送料机</a></strong>、<strong><a href="http://guanyues.com/">冲床送料机</a></strong>、<strong><a href="http://guanyues.com/">滚牙</a></strong>、<strong><a href="http://guanyues.com/">滚光</a></strong>、<strong><a href="http://guanyues.com/">滚花送料机</a></strong>、<strong><a href="http://guanyues.com/">自动车床</a></strong>、<strong><a href="http://guanyues.com/">数控车床自动送料机</a></strong>、<strong><a href="http://guanyues.com/">检测校正机及材料架等</a></strong>机床周边设备，公司可按客户不同需要设计制造非标送料机，是一家真正可以做到完成从工艺流程、设备选型、生产制造、安装调试、人员培训等一条龙服务的公司，并为用户提供完善的售后服务。</p>
+		<p>公司目前以良好的市场口碑和严格的内部管理得到了第三方权威机构的认证和肯定与多次合作</p>
+		<p> 建立健全了从方案设计、生产安装、 质量监督到售后服务等一整套细致合理的服务流程体系。随着公司的经营规模不断的壮大，总体实力不断的增强。</p>
+		<p>公司多年来在项目研发中，始终坚持着“以质量求生存，以技术求发展，以工期求信誉，以管理求效益”的企业宗旨；遵循着“真诚、专业、服务、创新”的企业精神；推进着“科学管理、争创精品、树立品牌、赢得市场”的战略目标，才使其在激烈的市场竞争中立于不动之地。不断的以坦诚的合作态度、良好的信誉和优良的设备，竭尽所能、竭尽全力为客户提供满意的服务，为自身创造更大的价值，为社会创造更多的财富。<a href="http://guanyues.com/contact/" style="color:#ce0000;">【更多详细】</a></p>                    
+		</div>
+            </div>
+            <div class="video">
+                 <h2>公司简介</h2>
+                <p>Company Simple Introduction</p>
+                <video src="http://www.w3school.com.cn/i/movie.ogg"  width="360" height="240" controls="controls">
+                Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+        <section class="produce_wrap">
+            <div class="submenu">
+                <div class="produce_head">
+                    <img src="/static/imgs/product.jpg">
+                </div>
+                 <ul class="sub_list">
+                    {% for series in all_series %}
+                     <li class="{% if series.id|stringformat:"i" == seriers_id %}active{% endif %}"><a href="{% url "product:list" series.id %}">{{ series.name }}</a></li>
+                    {% endfor %}
+                </ul>
+                <div class="service-hottel">
+                    <div class="service-con">
+                        <h4>7*24小时在线服务热线</h4>
+                        <h5><span>183</span><span>1101</span><span>7120</span></h5>
+                        <h6><span>一键咨询产品定制</span></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="produce_list">
+                <ul>
+                     {% for product in all_products %}
+                        <li class="item">
+                            <a class="picture" href="{% url 'product:product_detail' %}?product={{ product.id }}&series={{ seriers_id }}">
+                                <img src="{{ MEDIA_URL }}{{ product.image }}">
+                            </a>
+                            <div class="caption">
+                                <p  class="db"><strong class="db">{{ product.name }}</strong></p>
+                                <a href="{% url 'product:product_detail' %}?product={{ product.id }}&series={{ seriers_id }}" class="btn btn-huang" role="button">查看详情</a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+    </article>
+{% endblock %}

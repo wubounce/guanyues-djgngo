@@ -1,0 +1,1 @@
+default_app_config = 'product.apps.ProductConfig' #设置app显示的名字

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load static %}
+<title>{% block title %}无心磨床送料机、无心磨床自动送料机-冠粤自动化设备{% endblock %}</title>
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/product_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="main">
+         <div class="breadcrumb">
+            <span>您所在的位置:&nbsp;</span>
+            <ul  class="crumbs">
+                <li><a href="/">首页</a>></li>
+                <li>产品中心</li>
+            </ul>
+        </div>
+        <section class="produce_wrap">
+            <div class="submenu">
+                <div class="produce_head">
+                    <img src="/static/imgs/product.jpg">
+                </div>
+                 <ul class="sub_list">
+                    {% for series in all_series %}
+                     <li class="{% if series.id|stringformat:"i" == seriers_id %}active{% endif %}"><a href="{% url "product:list" series.id %}">{{ series.name }}</a></li>
+                    {% endfor %}
+                </ul>
+                <div class="service-hottel">
+                    <div class="service-con">
+                        <h4>7*24小时在线服务热线</h4>
+                        <h5><span>183</span><span>1101</span><span>7120</span></h5>
+                        <h6><span>一键咨询产品定制</span></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="produce_list">
+                <div class=" detail_wrap">
+                    <h2>{{ product.name }}</h2>
+                    <p>
+			{% autoescape off %}
+			{{ product.detail }}
+			{% endautoescape %}
+		    </p>
+                </div>
+
+            </div>
+        </section>
+    </div>
+{% endblock %}

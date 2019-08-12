@@ -1,0 +1,52 @@
+.video-nav-row {
+    padding: 16px 0 5px;
+    border-bottom: 1px solid #edf1f2
+}
+.video-nav-row .hd {
+    width: 52px;
+    height: 20px;
+    line-height: 34px;
+    font-weight: 700;
+    font-size: 14px;
+    color: #07111b;
+    text-align: right;
+    float: left;
+}
+
+.video-nav-row .bd {
+    margin-left: 64px
+}
+
+.video-nav-item {
+    display: inline-block;
+    margin: 0 4px
+}
+
+.video-nav-item a {
+    display: block;
+    line-height: 14px;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 14px
+}
+
+.video-nav-item.on a {
+    background: rgb(13, 127, 216);
+    color: #fff;
+    border-radius: 2px
+}
+.videos {
+    width: 100%;
+    overflow: hidden;
+    padding: 40px 0 40px 0;
+}
+.videos li {
+    float: left;
+    margin-right: 80px;
+}
+.video_name {
+    text-align: center;
+    line-height: 50px;
+    background: #eee;
+    font-size: 14px;
+}

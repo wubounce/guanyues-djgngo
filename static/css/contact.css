@@ -1,0 +1,24 @@
+
+.contact-left {
+	width: 30%;
+	float: left;
+	margin: 40px 0;
+	padding-right: 5%;
+}
+.contact-left h1 {
+	padding-bottom: 20px;
+}
+.contact-left li{
+    font-size: 16px;
+    line-height: 45px;
+}
+.contact-right {
+	width: 60%;
+	float: left;
+	margin: 40px 0;
+}
+.contact-right img {
+	display: block;
+	width:100%;
+	height: 340px;
+}

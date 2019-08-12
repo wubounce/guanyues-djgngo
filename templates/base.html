@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="baidu-site-verification" content="VB4vzDcu99" />
+    <meta name="google-site-verification" content="mjojYeldb36jYLPYi3K3g1waTk1ecwx4Q3dqwAD43bc" /> 
+    <meta name="360-site-verification" content="b46e1cc651b0b1f575293e9e3a24b753" />
+    <link rel="shortcut icon" href="{%static "favicon.ico" %}" />    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="Keywords" content="无心磨床送料机,无心磨床自动送料机,冲床送料机,送料机，定制送料机" />
+    <meta name="Description" content="东莞市冠粤自动化科技有限公司专业从事无心磨床送料机、外圆磨床送料机、滚丝机自动送料机、滚花机自动送料机等、可根据客户的需求订做各类专用机床，为客户节省了大量人力，降低了生产成本，所生产的设备深受用户好评。" />
+	<title>{% block title %}送料机、磨床送料机、自动送料机-东莞市冠粤自动化科技有限公司{% endblock %}</title>
+     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block css %}
+
+    {% endblock %}
+
+</head>
+<body>
+{% block header %}
+    <header id="header">
+        <div class="company_profile">
+            <div class="profile">
+                <div class="company_logo">
+                    <a href="https://www.guanyues.com"><h1 class="logo">东莞市冠粤自动化科技有限公司 www.guanyues.com</h1></a>
+                </div>
+                <div class="company_singl">
+                    <h2>一站式生产厂家竭诚为您服务</h2>
+                    <p>您的送料机定制工厂</p>
+                </div>
+                <div class="company_tel">
+                    <h3>7*24小时在线服务热线</h3>
+                    <p>15899645116</p>
+                </div>
+            </div>
+        </div>
+        <div class="menu">
+            <ul class="menu_list">
+                <li class="{% if request.path == '/' %}current{% endif %}"><a href="/" title="冠粤首页">冠粤首页</a></li>
+                <li class="{% if request.path|slice:'8' == '/product' %}current{% endif %}"><a href="{% url 'product:list' '1' %}" title="产品中心">产品中心</a></li>
+                <li class="{% if request.path|slice:'6' == '/video' %}current{% endif %}"><a href="{% url 'video:video_list' %}" title="视频中心">视频中心</a></li>
+                <li class="{% if request.path|slice:'4' == '/new' %}current{% endif %}"><a href="{% url 'new:new_list' %}" title="新闻中心">新闻中心</a></li>
+                <li class="{% if request.path|slice:'9' == '/customer' %}current{% endif %}"><a href="/" title="客户案例">客户案例</a></li>
+                <li class="{% if request.path|slice:'8' == '/contact' %}current{% endif %}"><a href="{% url 'contact' %}" title="新闻中心">联系我们</a></li>
+            </ul>
+        </div>
+        <section class="banner">
+            <img src="/static/imgs/banner.jpg" height="400" width="100%">
+        </section>
+    </header>
+{% endblock %}
+{% block crumbs %}
+
+{% endblock %}
+{% block content %}
+
+{% endblock %}
+{% block footer %}
+	<footer class="footer_wrap">
+        <div class="footer">
+            <p>
+                <a href="#">网站首页</a>|
+                <a href="#">公司简介</a>|
+                <a href="#">新闻中心</a>|
+                <a href="#">产品中心</a>|
+                <a href="#">客户案例</a>|
+                <a href="#">针对产品</a>|
+                <a href="#">视频中心</a>|
+                <a href="#">企业荣誉</a>|
+            </p>
+            <p>CopyRight © 2017-2019 东莞市冠粤自动化科技有限公司  All Rights Revered  备案号：粤ICP备17163639号-1</p>
+
+        </div>
+    </footer>
+{% endblock %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+{% block js %}{% endblock %}
+</body>
+</html>
